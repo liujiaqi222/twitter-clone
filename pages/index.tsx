@@ -1,13 +1,11 @@
-import styles from '@/styles/Home.module.css'
-
+import styles from "@/styles/Home.module.css";
+import Header from "@/components/Header";
 
 export default function Home() {
   return (
     <>
-    
-      <main className="text-3xl text-green-300">
-      ffdsf
-      </main>
+      <Header label='Home' />
+      <main className="text-3xl text-green-300">ffdsf</main>
     </>
-  )
+  );
 }

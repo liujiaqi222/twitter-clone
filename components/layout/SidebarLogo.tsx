@@ -19,7 +19,7 @@ const SidebarLogo = () => {
       transition"
       onClick={() => router.push("/")}
     >
-      <BsTwitter size={20} color="white" />
+      <BsTwitter size={28} color="white" />
     </div>
   );
 };
