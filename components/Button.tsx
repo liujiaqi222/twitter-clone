@@ -25,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({ label, secondary, fullWidth, large, onC
       ${large ? "text-xl px-5 py-3" : "text-md px-4 py-2"}
       ${outline ? "bg-transparent border-white text-white" : ""}
       `}
-    ></button>
+    >{label}</button>
   );
 };
 
