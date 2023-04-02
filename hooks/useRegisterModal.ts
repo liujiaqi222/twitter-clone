@@ -1,12 +1,12 @@
 import { create } from "zustand";
 
-interface LoginModalState {
+interface RegisterLoginState {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
 }
 
- const useLoginModal = create<LoginModalState>((set) => {
+ const useRegisterLogin = create<RegisterLoginState>((set) => {
   return {
     isOpen: false,
     onOpen: () => set({ isOpen: true }),
@@ -14,4 +14,4 @@ interface LoginModalState {
   };
 });
 
-export default useLoginModal;
+export default useRegisterLogin;

@@ -4,38 +4,46 @@ import { useCallback, useState } from "react";
 import Input from "../Input";
 import Modal from "../Modal";
 
-const LoginModal = () => {
+const RegisterModal = () => {
   const LoginModal = useLoginModal();
-  const registerModal = useRegisterModal();
-
+  const registerModal = useRegisterModal()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name,setName] = useState('')
+  const [username,setUsername] = useState('')
   const [isLoading, setIsLoading] = useState(false);
 
   const onToggle = useCallback(() => {
     if (isLoading) {
       return;
     }
-    LoginModal.onClose();
-    registerModal.onOpen();
+    registerModal.onClose();
+    LoginModal.onOpen();
   }, [isLoading, registerModal, LoginModal]);
 
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
-      // Todo: Login
+      // Todo: add register and login
 
-      LoginModal.onClose();
+      registerModal.onClose();
     } catch (err) {
       console.log(err);
     } finally {
       setIsLoading(false);
     }
-  }, [LoginModal]);
+  }, [registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4 ">
       <Input placeholder="email" onChange={(e) => setEmail(e.target.value)} value={email} disabled={isLoading} />
+      <Input placeholder="name" onChange={(e) => setName(e.target.value)} value={name} disabled={isLoading} />
+      <Input
+        placeholder="username"
+        onChange={(e) => setUsername(e.target.value)}
+        value={username}
+        disabled={isLoading}
+      />
       <Input
         placeholder="password"
         onChange={(e) => setPassword(e.target.value)}
@@ -44,29 +52,28 @@ const LoginModal = () => {
       />
     </div>
   );
+
   const footContent = (
     <div className="text-neutral-400 text-center mt-4">
-      <p>
-        First Time Using Twitter?
-        <span onClick={onToggle} className="text-white cursor-pointer hover:underline">
-          {" "}
-          Create an account
-        </span>
+      <p>Already have an account?
+        <span onClick={onToggle}
+        className="text-white cursor-pointer hover:underline"> Sign in</span>
       </p>
     </div>
-  );
+  )
+
   return (
     <Modal
       disabled={isLoading}
-      isOpen={LoginModal.isOpen}
-      title="Login"
-      actionLabel="Sign in"
+      isOpen={registerModal.isOpen}
+      title="Create a account"
+      actionLabel="Register"
       body={bodyContent}
       onSubmit={onSubmit}
+      onClose={registerModal.onClose}
       footer={footContent}
-      onClose={LoginModal.onClose}
     />
   );
 };
 
-export default LoginModal;
+export default RegisterModal;
